@@ -49,6 +49,11 @@ body {
 .menu-list ul li {
   margin-left: 50px;
   cursor: pointer;
+  padding: 5px;
+}
+
+.menu-list ul li:hover{
+  outline: 2px solid rgb(63, 154, 203);
 }
 
 .card-wrapper {
@@ -70,6 +75,7 @@ body {
   border-radius: 10px;
   /* overflow:hidden; */
 }
+
 .card-wrapper .card-container .plus {
   position: absolute;
   top: 0;
