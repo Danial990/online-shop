@@ -1,5 +1,3 @@
-
-
 const initState =
 {
     products: [],
@@ -23,28 +21,29 @@ function reducer(state, action) {
                 cards: [...state.cards, action.data],
             }
 
-        case 'deleteBuy':
+        case 'reRender':
+            return {
+                ...state,
+            }
+
+        case 'AddtoCard':
+            return {
+                ...state,
+                value: [...state.value, { data: action.data }]
+            }
+
+        case 'deleteProduct':
 
             return {
                 ...state,
-
+                cards: state.cards.filter((el) => {
+                    return el.id !== action.id
+                }),
+                value: state.value.filter((el) => {
+                    return el.id !== action.id
+                })
             }
 
-        case 'addToCard':
-
-            return {
-                ...state,
-                value: [...state.value,{ id: action.id, count: action.count }]
-            }
-
-        case 'sameCard':
-            return {
-                ...state,
-                value: [
-                    ...state.value,
-                    state.value[action.index]
-                ]
-            }
         default:
             return state;
     }

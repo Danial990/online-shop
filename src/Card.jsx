@@ -11,8 +11,9 @@ import axios from 'axios';
 function Card() {
 
     const context = useAuthState();
-
     const dispatch = useAuthDispatch()
+
+    const [showCard, setShowCard] = useState(false);
 
     const [electronics, setElectronics] = useState([]);
     const [jewelery, setJewelery] = useState([]);
@@ -84,6 +85,11 @@ function Card() {
 
     }
 
+
+    function handleShowKorb() {
+        setShowCard(!showCard)
+    }
+
     return (
         <>
             <Nav
@@ -93,17 +99,21 @@ function Card() {
                 handlewomens={handlewomens}
                 handleAll={handleAll}
             />
+            <div className="test">
 
-            <div className='korb'><FaCartPlus size={40} />
-                <div className="count">{context.cards.length}</div>
+                <div className='korb' onClick={() => handleShowKorb()}><FaCartPlus size={40} />
+                    <div className="count">{context.cards.length}</div>
+                </div>
             </div>
 
-            <Korb />
+            {
+                (showCard) && <Korb />
+            }
 
             <div className="card-wrapper">
                 {
 
-                    (showAll === "All" || showElectronics === "electronics") &&
+                    (showAll === "All" || showElectronics === "Electronics") &&
                     electronics.map((data) => {
 
                         return (
@@ -112,7 +122,7 @@ function Card() {
                     })
                 }
                 {
-                    (showAll === "All" || showJewelery === "jewelery") &&
+                    (showAll === "All" || showJewelery === "Jewelery") &&
                     jewelery.map((data) => {
 
                         return (
@@ -121,7 +131,7 @@ function Card() {
                     })
                 }
                 {
-                    (showAll === "All" || showMens === "mens clothing") &&
+                    (showAll === "All" || showMens === "Mens clothing") &&
                     mens.map((data) => {
                         return (
                             <Product key={data.id} props={data} />
@@ -129,7 +139,7 @@ function Card() {
                     })
                 }
                 {
-                    (showAll === "All" || showWomens === "womens clothing") &&
+                    (showAll === "All" || showWomens === "Womens clothing") &&
                     womens.map((data) => {
                         return (
                             <Product key={data.id} props={data} />
