@@ -52,7 +52,7 @@ body {
   padding: 5px;
 }
 
-.menu-list ul li:hover{
+.menu-list ul li:hover {
   outline: 2px solid rgb(63, 154, 203);
 }
 
@@ -141,7 +141,7 @@ body {
   width: 40px;
   direction: rtl;
   transition: 0.4s;
-
+  z-index: 1;
 }
 
 .korb:hover {
